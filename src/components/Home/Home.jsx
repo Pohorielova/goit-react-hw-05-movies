@@ -21,7 +21,7 @@ export const Home = () => {
       <ul>
         {trends.map(({ title, id }, index) => (
           <li key={index}>
-            <Link to={`${id}`} id={id}>
+            <Link to={`movies/${id}`} id={id}>
               {title}
             </Link>
           </li>

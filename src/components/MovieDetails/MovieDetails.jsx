@@ -18,6 +18,7 @@ export const MoviesDetails = () => {
 
   return (
     <Box as="main">
+      <Link to="/">back Home</Link>
       <section>
         <img
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
