@@ -7,7 +7,7 @@ export const Home = () => {
   useEffect(() => {
     fetchMoviesTrends().then(trending => {
       const newData = trending.results;
-      console.log(newData);
+
       setTrends(trends => {
         return [...trends, ...newData];
       });
@@ -18,8 +18,8 @@ export const Home = () => {
     <Box as="main">
       <Box as="h1">Trending today</Box>
       <ul>
-        {trends.map(({ title, id }, index) => (
-          <li key={id}>{title}</li>
+        {trends.map(({ title }, index) => (
+          <li key={index}>{title}</li>
         ))}
       </ul>
     </Box>

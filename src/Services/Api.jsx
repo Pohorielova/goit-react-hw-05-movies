@@ -7,4 +7,11 @@ async function fetchMoviesTrends() {
   const trending = await axios.get(`trending/movie/day?api_key=${KEY}`);
   return trending.data;
 }
-export { fetchMoviesTrends };
+
+async function fetchMoviesBySearch(searchQuery) {
+  const movie = await axios.get(
+    `search/movie?api_key=${KEY}&language=en-US&page=1&include_adult=false&query=${searchQuery}`
+  );
+  return movie.data;
+}
+export { fetchMoviesTrends, fetchMoviesBySearch };
