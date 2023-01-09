@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Box } from 'components/Box';
 import { useState, useEffect } from 'react';
 import { fetchMoviesTrends } from 'Services/Api';
@@ -18,8 +19,12 @@ export const Home = () => {
     <Box as="main">
       <Box as="h1">Trending today</Box>
       <ul>
-        {trends.map(({ title }, index) => (
-          <li key={index}>{title}</li>
+        {trends.map(({ title, id }, index) => (
+          <li key={index}>
+            <Link to={`${id}`} id={id}>
+              {title}
+            </Link>
+          </li>
         ))}
       </ul>
     </Box>

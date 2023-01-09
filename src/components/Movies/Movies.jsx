@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Box } from 'components/Box';
 import { useState } from 'react';
 import {
@@ -48,8 +49,12 @@ export const Movies = () => {
       </SearchForm>
 
       <ul>
-        {searchMovie.map(({ title }, index) => (
-          <li key={index}>{title}</li>
+        {searchMovie.map(({ title, id }, index) => (
+          <li key={index}>
+            <Link to={`${id}`} id={id}>
+              {title}
+            </Link>
+          </li>
         ))}
       </ul>
     </Box>

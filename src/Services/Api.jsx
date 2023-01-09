@@ -14,4 +14,12 @@ async function fetchMoviesBySearch(searchQuery) {
   );
   return movie.data;
 }
-export { fetchMoviesTrends, fetchMoviesBySearch };
+
+async function fetchMoviesDetails(movieId) {
+  const movie = await axios.get(
+    `movie/${movieId}?api_key=${KEY}&language=en-US`
+  );
+  return movie.data;
+}
+
+export { fetchMoviesTrends, fetchMoviesBySearch, fetchMoviesDetails };
