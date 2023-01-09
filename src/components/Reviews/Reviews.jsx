@@ -12,7 +12,6 @@ export const Reviews = () => {
   if (!review) {
     return null;
   }
-  console.log('review', review);
 
   return (
     <Box as="section">

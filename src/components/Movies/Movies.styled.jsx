@@ -1,29 +1,14 @@
 import styled from 'styled-components';
-export const HeaderSearch = styled.header`
-  top: 0;
-  left: 0;
-  position: sticky;
-  z-index: 1100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 64px;
-  padding-right: 24px;
-  padding-left: 24px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  color: #fff;
-  background-color: #c290d1;
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-`;
+import { NavLink } from 'react-router-dom';
+
 export const SearchForm = styled.form`
+  margin-top: 15px;
+  margin-bottom: 15px;
   display: flex;
   align-items: center;
   width: 100%;
   max-width: 600px;
-  background-color: #b59898;
+  background-color: white;
   border-radius: 3px;
   overflow: hidden;
 `;
@@ -32,7 +17,7 @@ export const SearchFormBtn = styled.button`
   width: 48px;
   height: 48px;
   border: 0;
-  background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
+  background-color: orange;
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: center;
@@ -51,8 +36,8 @@ export const SearchFormInput = styled.input`
   font-size: 20px;
   border: none;
   outline: none;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   &::placeholder {
     font: inherit;
     font-size: 18px;
@@ -68,4 +53,44 @@ export const SearchFormBtnLabel = styled.span`
   white-space: nowrap;
   clip-path: inset(50%);
   border: 0;
+`;
+
+export const MovieList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+`;
+export const MovieCard = styled.li`
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  max-width: 270px;
+  justify-content: space-between;
+  &:hover {
+    transform: scale(1.06);
+  }
+`;
+
+export const MovieDesc = styled.p`
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: grey;
+`;
+export const Title = styled.p`
+  font-size: 18px;
+  font-weight: 500;
+  color: black;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 10px;
+`;
+export const TitleLink = styled(NavLink)`
+  /* font-size: 18px;
+  font-weight: 500;
+  color: black;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 10px; */
 `;

@@ -18,23 +18,25 @@ export const MoviesDetails = () => {
 
   return (
     <Box as="main">
-      <Link to="/">back Home</Link>
-      <section>
+      <Box as="section" mt={15} mb={15} display="flex" gridGap={20}>
         <img
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          width={250}
+          width={350}
           alt=""
         />
-        <h1>
-          {movie.title} {new Date(movie.release_date).toLocaleDateString()}
-        </h1>
-        <p>User score: {Number(movie.popularity).toFixed(0)}%</p>
-        <h2>Overview</h2>
-        <p>{movie.overview}</p>
-        <h2>Genres</h2>
-        <p>{movie.genres.map(({ name }) => name).join(' ')}</p>
-      </section>
-      <section>
+        <Box as="div" display="flex" flexDirection="column" gridGap={20}>
+          <h1>{movie.title}</h1>
+          <p>
+            Release date: {new Date(movie.release_date).toLocaleDateString()}
+          </p>
+          <p>User score: {Number(movie.popularity).toFixed(0)}%</p>
+          <h2>Overview</h2>
+          <p>{movie.overview}</p>
+          <h2>Genres</h2>
+          <p>{movie.genres.map(({ name }) => name).join(' ')}</p>
+        </Box>
+      </Box>
+      <Box as="section" color="deeppink">
         <h3>Additional information</h3>
         <ul>
           <li>
@@ -44,7 +46,7 @@ export const MoviesDetails = () => {
             <Link to="reviews">Reviews</Link>
           </li>
         </ul>
-      </section>
+      </Box>
       <Outlet />
     </Box>
   );

@@ -6,6 +6,11 @@ import {
   SearchFormBtn,
   SearchFormInput,
   SearchFormBtnLabel,
+  MovieCard,
+  MovieList,
+  TitleLink,
+  MovieDesc,
+  Title,
 } from './Movies.styled';
 import { fetchMoviesBySearch } from 'Services/Api';
 
@@ -36,27 +41,34 @@ export const Movies = () => {
   return (
     <Box as="main">
       <SearchForm onSubmit={handleSubmit}>
-        <SearchFormBtn type="submit">
-          <SearchFormBtnLabel>Search</SearchFormBtnLabel>
-        </SearchFormBtn>
-
         <SearchFormInput
           type="text"
           autocomplete="off"
           placeholder="Search movies"
           onChange={handleQueryChange}
         />
+        <SearchFormBtn type="submit">
+          <SearchFormBtnLabel>Search</SearchFormBtnLabel>
+        </SearchFormBtn>
       </SearchForm>
 
-      <ul>
-        {searchMovie.map(({ title, id }, index) => (
-          <li key={index}>
-            <Link to={`${id}`} id={id}>
-              {title}
-            </Link>
-          </li>
+      <MovieList>
+        {searchMovie.map(({ title, id, poster_path, release_date }, index) => (
+          <MovieCard key={index}>
+            <TitleLink to={`${id}`} id={id}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                width={270}
+                alt=""
+              />
+              <Title>{title}</Title>
+            </TitleLink>
+            <MovieDesc>
+              Release date: {new Date(release_date).toLocaleDateString()}
+            </MovieDesc>
+          </MovieCard>
         ))}
-      </ul>
+      </MovieList>
     </Box>
   );
 };

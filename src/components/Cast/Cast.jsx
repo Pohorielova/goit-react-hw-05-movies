@@ -12,7 +12,6 @@ export const Cast = () => {
   if (!cast) {
     return null;
   }
-  console.log('cast', cast.cast);
 
   return (
     <Box as="section">
