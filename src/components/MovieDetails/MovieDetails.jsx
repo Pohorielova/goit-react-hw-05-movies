@@ -1,9 +1,10 @@
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { Box } from 'components/Box';
 import { fetchMoviesDetails } from 'Services/Api';
-export const MoviesDetails = () => {
+import { ColorRing } from 'react-loader-spinner';
+const MoviesDetails = () => {
   const { movieId } = useParams();
 
   const [movie, setMovie] = useState(null);
@@ -69,11 +70,27 @@ export const MoviesDetails = () => {
         <NavItem to="cast">Cast</NavItem>
         <NavItem to="reviews">Reviews</NavItem>
       </Box>
-      <Outlet />
+      <Suspense
+        fallback={
+          <div>
+            <ColorRing
+              visible={true}
+              height="80"
+              width="80"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{}}
+              wrapperClass="blocks-wrapper"
+              colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+            />
+          </div>
+        }
+      >
+        <Outlet />
+      </Suspense>
     </Box>
   );
 };
-
+export default MoviesDetails;
 // style
 const NavItem = styled(NavLink)`
   color: black;

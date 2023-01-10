@@ -1,4 +1,3 @@
-
 import { Box } from 'components/Box';
 import { useState } from 'react';
 import {
@@ -14,7 +13,7 @@ import {
 } from './Movies.styled';
 import { fetchMoviesBySearch } from 'Services/Api';
 
-export const Movies = () => {
+const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchMovie, setSearchMovie] = useState([]);
   const handleQueryChange = e => {
@@ -72,3 +71,4 @@ export const Movies = () => {
     </Box>
   );
 };
+export default Movies;

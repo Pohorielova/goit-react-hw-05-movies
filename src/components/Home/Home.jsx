@@ -1,6 +1,8 @@
 import { Box } from 'components/Box';
+import { Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchMoviesTrends } from 'Services/Api';
+
 import {
   TrendCard,
   TrendList,
@@ -8,7 +10,7 @@ import {
   TrendDesc,
   Title,
 } from './Home.styled';
-export const Home = () => {
+const Home = () => {
   const [trends, setTrends] = useState([]);
 
   useEffect(() => {
@@ -26,6 +28,7 @@ export const Home = () => {
       <Box as="h1" fontSize={34} fontWeight={500} mt={15} mb={15}>
         Trending today
       </Box>
+
       <TrendList>
         {trends.map(({ title, id, poster_path, release_date }, index) => (
           <TrendCard key={index}>
@@ -43,6 +46,8 @@ export const Home = () => {
           </TrendCard>
         ))}
       </TrendList>
+      <Outlet />
     </Box>
   );
 };
+export default Home;

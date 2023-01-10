@@ -4,7 +4,7 @@ import { Box } from 'components/Box';
 import { fetchMoviesCast } from 'Services/Api';
 import { CastCard, CastList, CastName, CastChar } from './Cast.styled';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState(null);
   useEffect(() => {
@@ -32,3 +32,4 @@ export const Cast = () => {
     </Box>
   );
 };
+export default Cast;
