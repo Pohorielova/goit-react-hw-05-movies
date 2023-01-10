@@ -1,5 +1,6 @@
-// https://api.themoviedb.org/3/movie/550?api_key=532b3122039bc5d97d2bdc19adad4ecb
 import axios from 'axios';
+import PropTypes from 'prop-types';
+
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 const KEY = '532b3122039bc5d97d2bdc19adad4ecb';
 
@@ -43,3 +44,8 @@ export {
   fetchMoviesCast,
   fetchMoviesReviews,
 };
+
+fetchMoviesReviews.propTypes = { movieId: PropTypes.number.isRequired };
+fetchMoviesCast.propTypes = { movieId: PropTypes.number.isRequired };
+fetchMoviesDetails.propTypes = { movieId: PropTypes.number.isRequired };
+fetchMoviesBySearch.propTypes = { searchQuery: PropTypes.string.isRequired };
