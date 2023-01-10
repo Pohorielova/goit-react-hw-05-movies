@@ -29,13 +29,6 @@ export const Home = () => {
       <TrendList>
         {trends.map(({ title, id, poster_path, release_date }, index) => (
           <TrendCard key={index}>
-            {/* <Box
-              as="div"
-              display="flex"
-              flexDirection="column"
-              justifyContent="center"
-              pb={5}
-            > */}
             <TitleLink to={`movies/${id}`} id={id}>
               <img
                 src={`https://image.tmdb.org/t/p/w500${poster_path}`}
@@ -47,7 +40,6 @@ export const Home = () => {
             <TrendDesc>
               Release date: {new Date(release_date).toLocaleDateString()}
             </TrendDesc>
-            {/* </Box> */}
           </TrendCard>
         ))}
       </TrendList>

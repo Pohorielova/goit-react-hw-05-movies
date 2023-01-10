@@ -1,4 +1,5 @@
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
+import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { Box } from 'components/Box';
 import { fetchMoviesDetails } from 'Services/Api';
@@ -14,40 +15,76 @@ export const MoviesDetails = () => {
     return null;
   }
 
-  //  const { recipient, account, total, date } = movie;
+  const { poster_path, release_date, popularity, overview, genres, title } =
+    movie;
 
   return (
     <Box as="main">
-      <Box as="section" mt={15} mb={15} display="flex" gridGap={20}>
+      <Box
+        as="section"
+        pt={15}
+        pb={15}
+        display="flex"
+        gridGap={70}
+        borderBottom="2px solid orange"
+      >
         <img
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          width={350}
+          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          width={250}
           alt=""
         />
-        <Box as="div" display="flex" flexDirection="column" gridGap={20}>
-          <h1>{movie.title}</h1>
-          <p>
-            Release date: {new Date(movie.release_date).toLocaleDateString()}
-          </p>
-          <p>User score: {Number(movie.popularity).toFixed(0)}%</p>
-          <h2>Overview</h2>
-          <p>{movie.overview}</p>
-          <h2>Genres</h2>
-          <p>{movie.genres.map(({ name }) => name).join(' ')}</p>
+        <Box
+          as="div"
+          display="flex"
+          flexDirection="column"
+          gridGap={20}
+          width={900}
+        >
+          <h1>{title}</h1>
+          <Box as="div" display="flex" flexDirection="column" gridGap={10}>
+            <p>Release date: {new Date(release_date).toLocaleDateString()}</p>
+            <p>User score: {Number(popularity).toFixed(0)}%</p>
+          </Box>
+
+          <Box as="div" display="flex" flexDirection="column" gridGap={10}>
+            <h2>Overview:</h2>
+            <p>{overview}</p>
+          </Box>
+          <Box as="div" display="flex" flexDirection="column" gridGap={10}>
+            <h2>Genres:</h2>
+            <p>{genres.map(({ name }) => name).join(' ')}</p>
+          </Box>
         </Box>
       </Box>
-      <Box as="section" color="deeppink">
-        <h3>Additional information</h3>
-        <ul>
-          <li>
-            <Link to="cast">Cast</Link>
-          </li>
-          <li>
-            <Link to="reviews">Reviews</Link>
-          </li>
-        </ul>
+      <Box
+        as="section"
+        pt={15}
+        pb={15}
+        borderBottom="2px solid orange"
+        display="flex"
+        alignItems="center"
+        gridGap={10}
+      >
+        <h3>Additional information:</h3>
+        <NavItem to="cast">Cast</NavItem>
+        <NavItem to="reviews">Reviews</NavItem>
       </Box>
       <Outlet />
     </Box>
   );
 };
+
+// style
+const NavItem = styled(NavLink)`
+  color: black;
+  font-size: 24px;
+  text-decoration: underline;
+
+  &.active {
+    color: orange;
+  }
+
+  :hover:not(.active) {
+    color: deeppink;
+  }
+`;

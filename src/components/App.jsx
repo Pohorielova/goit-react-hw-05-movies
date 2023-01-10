@@ -30,6 +30,7 @@ export const App = () => {
   );
 };
 
+// styleApp
 const NavItem = styled(NavLink)`
   color: black;
   font-size: 28px;

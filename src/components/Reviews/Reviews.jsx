@@ -12,17 +12,17 @@ export const Reviews = () => {
   if (!review) {
     return null;
   }
-
+  // const { results, author, content } = review;
   return (
     <Box as="section">
-      <ul>
-        {review.results.map((review, index) => (
+      <Box as="ul" display="flex" flexDirection="column" gridGap={15} p={0}>
+        {review.results.map(({ author, content }, index) => (
           <li key={index}>
-            <p>{review.author}</p>
-            <p>{review.content}</p>
+            <h3>Author: {author}</h3>
+            <p>{content}</p>
           </li>
         ))}
-      </ul>
+      </Box>
     </Box>
   );
 };
